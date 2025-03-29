@@ -8,7 +8,7 @@ import CodeModel from "@/db/models/code.model";
 import ConversationModel from "@/db/models/conversation.model";
 import TransformedImageModel from "@/db/models/transformes-image.model";
 
-export  async function POST(req:Request, res:Response) {
+export  async function POST(req:Request) {
     const { email } = await req.json();
     console.log(email);
     
@@ -36,15 +36,12 @@ export  async function POST(req:Request, res:Response) {
      ?.populate('conversation')
      ?.populate('transformedImages')
 
-   console.log("Populated User:", populatedUser);
-
-     
+ 
 
    //  console.log(populatedUser);
      
      return NextResponse.json(populatedUser);
  } catch (error) {
-    console.log(error);
-    
+    return NextResponse.json({ error: 'Failed to fetch user data' }, { status: 500 });
  }
 }

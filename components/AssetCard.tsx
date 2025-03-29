@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from 'react'
+import React,{ useState } from 'react'
 import { MessageSquare, ImageIcon, Music, Code, ChevronDown, ChevronUp, Plus,FilePenLine ,EyeIcon, CaseUpper} from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'

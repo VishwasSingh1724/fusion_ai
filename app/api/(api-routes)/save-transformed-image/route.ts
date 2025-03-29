@@ -1,11 +1,10 @@
-// pages/api/save-image.ts
 import DbConnect from '@/db/DbConnection';
 import TransformedImageSchema from '@/db/models/transformes-image.model';
 import {User} from '@/db/models/user.model'
 
 import { NextResponse } from 'next/server';
 
-export  async function POST(req: Request, res: Response) {
+export  async function POST(req: Request) {
  
 
   const {title, url ,email} =await req.json();
@@ -29,7 +28,6 @@ export  async function POST(req: Request, res: Response) {
 
     await user.transformedImages.push(TransformedImage._id);
     await user.save()
-   console.log(await TransformedImage.populate('userId'))
    
     return NextResponse.json({ message: 'Transformed Image saved successfully!', image: TransformedImage });
   } catch (error) {

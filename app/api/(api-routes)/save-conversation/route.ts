@@ -3,7 +3,7 @@ import ConversationSchama from '@/db/models/conversation.model';
 import {User} from '@/db/models/user.model'
 import { NextResponse } from 'next/server';
 
-export  async function POST(req: Request, res:Response) {
+export  async function POST(req: Request) {
   await DbConnect();
 
   if (req.method === 'POST') {

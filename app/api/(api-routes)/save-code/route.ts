@@ -3,7 +3,7 @@ import CodeSchema from '@/db/models/code.model';
 import {User} from '@/db/models/user.model'
 import { NextResponse } from 'next/server';
 
-export  async function POST(req: Request, res: Response) {
+export  async function POST(req: Request) {
   const { code, prompt, email } = await req.json();
    console.log(code, prompt, email );
    

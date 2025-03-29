@@ -4,7 +4,7 @@ import{ User} from '@/db/models/user.model'
 import MusicSchema from '@/db/models/music.models';
 import { NextResponse } from 'next/server';
 
-export  async function POST(req: Request, res: Response) {
+export  async function POST(req: Request) {
  
 
   const {title, url ,email} =await req.json();
@@ -28,7 +28,6 @@ export  async function POST(req: Request, res: Response) {
 
     await user.musics.push(newMusic._id);
     user.save()
-   console.log(await newMusic.populate('userId'))
    
     return NextResponse.json({ message: 'Music saved successfully!', image: newMusic });
   } catch (error) {

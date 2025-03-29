@@ -4,7 +4,7 @@ import Image from '@/db/models/image.model'
 import{ User }from '@/db/models/user.model'
 import { NextResponse } from 'next/server';
 
-export  async function POST(req: Request, res: Response) {
+export  async function POST(req: Request) {
   const { url, name, email } = await req.json();
 
   try {
@@ -31,14 +31,6 @@ export  async function POST(req: Request, res: Response) {
     // Save the updated user document
     await user.save();
 
-    const populatedUser = await User.findById(user._id)
-    .populate('images')
-    .populate('musics')
-    .populate('code')
-    .populate('conversation')
-    .populate('transformedImages')
-   
-    console.log(populatedUser)
     return NextResponse.json({ message: 'Image saved successfully!', image: newImage });
   } catch (error) {
     console.error('Error saving image:', error);
